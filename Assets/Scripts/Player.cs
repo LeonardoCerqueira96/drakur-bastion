@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     [Tooltip("In meters")] [SerializeField] private float xRange = 5f;
     [Tooltip("In meters")] [SerializeField] private float yRange = 4f;
 
-    [SerializeField] private float positionPitchFactor = -4;
+    [SerializeField] private float positionPitchFactor = -4f;
     [SerializeField] private float controlPitchFactor = -30f;
 
-    [SerializeField] private float positionYawFactor = 4;
+    [SerializeField] private float positionYawFactor = 4f;
 
     [SerializeField] private float controlRollFactor = -20f;
 
@@ -25,9 +25,14 @@ public class Player : MonoBehaviour
 	{
 		
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate()
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log("Player triggered something");
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
         CalculateTranslation();
         CalculateRotation();
