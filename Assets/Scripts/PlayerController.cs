@@ -77,6 +77,5 @@ public class PlayerController : MonoBehaviour
     private void DisableControls()
     {
         isControlEnabled = false;
-        Debug.Log("Controls disabled");
     }
 }
