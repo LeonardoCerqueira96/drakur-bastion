@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour 
 {
-    private static bool created = false;
-
     void Awake()
     {
-        if (!created)
+        int numMusicPlayers = FindObjectsOfType<MusicPlayer>().Length;
+
+        if (numMusicPlayers > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
         {
             DontDestroyOnLoad(gameObject);
-            created = true;
         }
     }
-
-    // Use this for initialization
-    void Start() 
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update() 
-	{
-		
-	}
 }
