@@ -6,9 +6,15 @@ using UnityEngine;
 public class EnemyCollisionHandler : MonoBehaviour 
 {
 
+    [SerializeField] private GameObject deathFX;
+
+    private Transform runtimeParent;
+
 	// Use this for initialization
 	void Start() 
 	{
+        runtimeParent = GameObject.Find("Runtime").transform;
+
         AddNonTriggerCollider();
 	}
 
@@ -20,6 +26,8 @@ public class EnemyCollisionHandler : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        GameObject fxInstance = Instantiate(deathFX, transform.position, Quaternion.identity);
+        fxInstance.transform.parent = runtimeParent;
         Destroy(gameObject);
     }
 }
