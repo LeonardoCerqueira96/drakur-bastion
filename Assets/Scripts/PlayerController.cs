@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("In ms^-1")] [SerializeField] private float verticalSpeed = 3f;
     [Tooltip("In meters")] [SerializeField] private float xRange = 5f;
     [Tooltip("In meters")] [SerializeField] private float yRange = 4f;
+    [SerializeField] private GameObject[] guns;
 
     [Header("Screen position based")]
     [SerializeField] private float positionPitchFactor = -4f;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             CalculateTranslation();
             CalculateRotation();
+            ProcessFiring();
         }
     }
 
@@ -67,6 +69,43 @@ public class PlayerController : MonoBehaviour
         float roll = controlRollFactor * xThrow;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            Debug.Log("Hi");
+            DeactivateGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            ParticleSystem gunParticles = gun.GetComponent<ParticleSystem>();
+            if (!gunParticles.isEmitting)
+            {
+                gunParticles.Play();
+            }
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            ParticleSystem gunParticles = gun.GetComponent<ParticleSystem>();
+            if (gunParticles.isEmitting)
+            {
+                gunParticles.Stop();
+            }
+        }
     }
 
     private void OnPlayerDeath() // called by string reference

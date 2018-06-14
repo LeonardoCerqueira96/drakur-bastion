@@ -165,6 +165,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4989619666879370, guid: 4e2a0364ee16acf469360e4d59707332,
     type: 2}
   m_PrefabInternal: {fileID: 58327705}
+--- !u!1 &215627564 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1565562004152846, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+    type: 2}
+  m_PrefabInternal: {fileID: 645055188}
 --- !u!1 &268732077
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b0e656d43dbb24fbfa2494ffe29418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerHit: 100
   scoreOverTime: 1
   timeUpdateUnit: 0.1
 --- !u!1 &282840810
@@ -700,6 +704,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 282840814}
     m_Modifications:
+    - target: {fileID: 114766813879395042, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+        type: 2}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4033453170623740, guid: 3a6129aad804e3b4a9cd2e42e13d222f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -730,6 +739,42 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4033453170623740, guid: 3a6129aad804e3b4a9cd2e42e13d222f, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662177668317194, guid: 3a6129aad804e3b4a9cd2e42e13d222f, type: 2}
+      propertyPath: m_Name
+      value: Gun Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565562004152846, guid: 3a6129aad804e3b4a9cd2e42e13d222f, type: 2}
+      propertyPath: m_Name
+      value: Gun Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 114766813879395042, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+        type: 2}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1920908254}
+    - target: {fileID: 114766813879395042, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+        type: 2}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 215627564}
+    - target: {fileID: 1565562004152846, guid: 3a6129aad804e3b4a9cd2e42e13d222f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662177668317194, guid: 3a6129aad804e3b4a9cd2e42e13d222f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198620124211506992, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198598348626831656, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+        type: 2}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1781,6 +1826,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4232639322308592, guid: 2da05d304bef36f46a8039a22d0824a3,
     type: 2}
   m_PrefabInternal: {fileID: 1866714634}
+--- !u!1 &1920908254 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1662177668317194, guid: 3a6129aad804e3b4a9cd2e42e13d222f,
+    type: 2}
+  m_PrefabInternal: {fileID: 645055188}
 --- !u!1 &1926444475
 GameObject:
   m_ObjectHideFlags: 0
