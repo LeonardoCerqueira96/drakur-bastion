@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CollisonHandler : MonoBehaviour 
+public class CollisionHandler : MonoBehaviour 
 {
     [Tooltip("In seconds")] [SerializeField] private float reloadDelay = 1f;
     [Tooltip("FX prefab on player")] [SerializeField] private GameObject deathFX;
 
+    private bool isPlayerAlive = true;
+
+    public bool IsPlayerAlive()
+    {
+        return isPlayerAlive;
+    }
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -18,6 +24,8 @@ public class CollisonHandler : MonoBehaviour
     {
         SendMessage("OnPlayerDeath");
         deathFX.SetActive(true);
+        isPlayerAlive = false;
+
         Invoke("ReloadLevel", reloadDelay);
     }
 
