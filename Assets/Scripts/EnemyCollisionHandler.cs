@@ -6,13 +6,14 @@ using UnityEngine;
 public class EnemyCollisionHandler : MonoBehaviour 
 {
     [SerializeField] private int scorePerHit = 100;
+    [SerializeField] private int hitsLeft = 10;
     [SerializeField] private GameObject deathFX;
 
     private Transform runtimeParent;
     private ScoreBoard scoreBoard;
     private Collider collider;
 
-    private bool hasBeenHit = false;
+    private bool hasBeenKilled = false;
 
 	// Use this for initialization
 	void Start() 
@@ -31,12 +32,20 @@ public class EnemyCollisionHandler : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (hasBeenHit)
+        if (!hasBeenKilled)
         {
-            return;
+            hitsLeft--;
+            
+            if (hitsLeft <= 0)
+            {
+                KillEnemy();
+            }
         }
+    }
 
-        hasBeenHit = true;
+    private void KillEnemy()
+    {
+        hasBeenKilled = true;
 
         GameObject fxInstance = Instantiate(deathFX, transform.position, Quaternion.identity);
         fxInstance.transform.parent = runtimeParent;
